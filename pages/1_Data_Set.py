@@ -1,11 +1,6 @@
 import streamlit as st
 import pandas as pd
-
-
-@st.cache
-def read_dataset():
-    return pd.read_csv("titanic.csv")
-
+from main_page import data_set
 
 columns_list = []
 
@@ -20,12 +15,9 @@ def create_filter_columns(Column_Name):
             pass
 
 
-df_titanic = read_dataset()
-df_titanic = df_titanic.drop(["PassengerId"], axis = 1)
-
 st.sidebar.write("Show Columns")
-for column in df_titanic.columns:
+for column in data_set.columns:
     create_filter_columns(column)
 
 
-st.write(df_titanic[columns_list])
+st.write(data_set[columns_list])
