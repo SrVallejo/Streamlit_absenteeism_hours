@@ -24,6 +24,7 @@ Visualizaciones:
     Predicción clasificación
         -Datos algoritmo
         -Matriz de confusion
+        -Quizás grafos
     Predicción Regresión
         -Datos algoritmo
         -¿Gráfico comparar?
