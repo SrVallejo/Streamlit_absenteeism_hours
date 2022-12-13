@@ -1,0 +1,31 @@
+Visualizaciones:
+
+    Gráficos:
+    Frecuencia y media de horas por:
+        Mes
+        Día de la semana
+        Season
+        ID top
+        Massa corporal
+    
+    Reasons Frecuencia y media
+
+    Página correlación
+        Top correlación
+        Mapa calor correlación
+        Filtrar por columnas el mapa
+
+    
+
+    Tablas:
+        Dataset -> Añadir filtros fila
+        Dataset groupby id -> Filtros de fila y columna
+
+    Predicción clasificación
+        -Datos algoritmo
+        -Matriz de confusion
+    Predicción Regresión
+        -Datos algoritmo
+        -¿Gráfico comparar?
+
+
