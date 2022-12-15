@@ -127,7 +127,7 @@ for index,row in data_set.iterrows():
     elif row["Seasons"] == 4: seasons_list.append("Spring")
 
     reason_col.append(reasons[int(row["Reason for absence"])])
-    day_col.append(reasons[int(row["Day of the week"])])
+    day_col.append(day_of_the_week[int(row["Day of the week"])])
 
 
 data_set["Seasons"] = seasons_list
