@@ -1,6 +1,6 @@
 
 #------mainpage???---------
-
+#------aqui una opcion para paginas com opciones de variables y 2 tipos de producion de dato----
 import streamlit as st
 import pandas as pd
 import numpy as np
