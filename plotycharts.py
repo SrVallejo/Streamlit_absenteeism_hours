@@ -1,6 +1,6 @@
 
 #------mainpage???---------
-#------aqui una opcion para paginas com opciones de variables y 2 tipos de producion de dato----
+#------aqui una opción para páginas com opciones de variables y 2 tipos de producion de graficos----
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -48,3 +48,30 @@ elif options=='Data Header':
 plot(df)
     elif options=='Interactive Plot'
 plot(df)    
+
+
+#-------------------graficos con groupby----------------
+
+# Absence sum by season (Bar chat)
+
+absenteeism_by_season= (
+
+def_selection.groupby(by=['absenteeism_time_in_hours']).sum().[['season']].sort_values(by='season')
+)
+Fig_absence_season = px.bar(
+    absenteeism_by_season,
+    x= 'season',
+    y = 'absenteeism_by_season'
+    orientation=h,
+    title= <b> Absenteeism_by_season </b>,
+    color_discrete_sequence=[#0083B8]* len[absenteeism_by_season],
+    template= "plotly_white",
+)
+# To quit the grades from ploty
+
+Fig_absence_season.update_layout
+        (plot_bgcolors="rgba"(0,0,0,0)",
+        xaxis=dict(showgrid)
+)
+
+st.ploty_chart(Fig_absence_season)
