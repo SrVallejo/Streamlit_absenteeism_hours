@@ -91,8 +91,48 @@ def prepare_dataset_prediction():
 
 
 
+###################################### Prepare Data set ##################################
+
 data_set = read_dataset()
 
-dataset_pred = prepare_dataset_prediction()
+reasons = [
+    "[0]Not specified", "[1]Infectious and parasitic diseases", "[2]Neoplasms",
+    "[3]Diseases of the blood and immune mechanism","[4]Endocrine, nutritional and metabolic diseases","[5]Mental and behavioural disorders",
+    "[6]Diseases of the nervous system", "[7]Diseases of the eye and adnexa", "[8]Diseases of the ear and mastoid process",
+    "[9]Diseases of the circulatory system","[10]Diseases of the respiratory system","[11]Diseases of the digestive system",
+    "[12]Diseases of the skin and subcutaneous tissue", "[13]Diseases of the musculoskeletal system and connective tissue","[14]Diseases of the genitourinary system",
+    "[15]Pregnancy, childbirth and the puerperium","[16]Certain conditions from the perinatal period","[17]Congenital malformations and chromosomal abnormalities",
+    "[18]Syntoms not elsewhere classified","[19]Injury, poisoning or other by external causes","[20]External causes of morbidity and mortality",
+    "[21]Health status and contact with health services", "[22]Patient follow-up","[23]Medical consultation",
+    "[24]Blood donation", "[25]Laboratory examination", "[26]Unjustified absence", 
+    "[27]Physiotherapy", "[28]Dental consultation" 
+]
 
-#data_set_prediction -> 
+
+day_of_the_week = [
+    "Not specified","Sunday","Monday",
+    "Tuesday","Wednesday","Thursday",
+    "Friday","Saturday"
+]
+
+
+# Loop for changing Season, day and reason Number to String
+seasons_list =[]
+day_col = []
+reason_col = []
+for index,row in data_set.iterrows():
+    if row["Seasons"] == 1: seasons_list.append("Winter")
+    elif row["Seasons"] == 2: seasons_list.append("Summer")
+    elif row["Seasons"] == 3: seasons_list.append("Autumn")
+    elif row["Seasons"] == 4: seasons_list.append("Spring")
+
+    reason_col.append(reasons[int(row["Reason for absence"])])
+    day_col.append(reasons[int(row["Day of the week"])])
+
+
+data_set["Seasons"] = seasons_list
+data_set["Reason for absence"] = reason_col
+data_set["Day of the week"] = day_col
+
+
+dataset_pred = prepare_dataset_prediction()
