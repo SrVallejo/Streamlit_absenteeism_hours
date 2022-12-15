@@ -72,7 +72,7 @@ with col1:
     options = dataset_id["Reason for absence"].unique().tolist()
     options.sort()
     options.insert(0,"No filter")
-    sb_reasons = st.selectbox("Reason for absence most frequent",options)
+    sb_reasons = st.selectbox("Most frequent reason",options)
 
     
 
@@ -107,6 +107,8 @@ elif ssl_sons == "No": ds_show = ds_show[ds_show["Son"] == 0]
 
 if sb_reasons != "No filter":
     ds_show = ds_show[ds_show["Reason for absence"]== sb_reasons]
+
+
 ds_show = ds_show[(ds_show["Body mass index"]>=sl_min_mass) & (ds_show["Body mass index"]<=sl_max_mass)]
 
 if ssl_drinker == "Yes":ds_show = ds_show[ds_show["Social drinker"] == 1]
