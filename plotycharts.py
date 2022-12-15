@@ -35,7 +35,7 @@ def interactive_plot(Absenteeism_at_work):
 
 options = st.radio ('Pages', options = 
                     Data Statistics,
-                    Data Header, Plot, Interactive Plot)
+                    Data Header, Plot, Interactive Plot )
 
 if upload_file:
     df= pd.read_csv('Absenteeism_at_work.csv')
