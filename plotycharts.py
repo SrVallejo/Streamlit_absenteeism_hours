@@ -9,7 +9,7 @@ import plotly.figure_factory as ff
 
 import plotly.express as px
 
-def stast(dataframe):
+def stats(dataframe):
     st.header('Data Statistic')
     st.writer(dataframe.describe())
 
@@ -38,7 +38,7 @@ options = st.radio ('Pages', options =
                     'Data Header', 'Plot', 'Interactive Plot' ))
 
 
-df= pd.read_csv('./dataset/Absenteeism_at_work.csv',delimiter=';')
+df= pd.read_csv('dataset/Absenteeism_at_work.csv',delimiter=';')
 if options=='Data Statistics':
     (stats(df))
 elif options=='Data Header':
