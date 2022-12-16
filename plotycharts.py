@@ -11,7 +11,7 @@ import plotly.express as px
 
 def stats(dataframe):
     st.header('Data Statistic')
-    st.writer(dataframe.describe())
+    st.write(dataframe.describe())
 
 def data_header (dataframe):
     st.header('Data Header')
@@ -22,15 +22,16 @@ def plot(dataframe):
     ax.scatter (x=df['Depth'], y= df['Magnitud'])
     ax.set_xlabel('Depth')
     ax.set_ylabel('Magnitud')
+    
+    
     st.pyplot(fig)
 def interactive_plot(dataframe):
-    x_axis_val=st.selectbox('Select X-Axis Value'),
-    options = df.columns
-    y_axis_val=st.selectbox('Select Y-Axis Value'),
-    options = df.columns
-    plot.scatter(dataframe,  x=x_axis_val, y=y_axis_val)
+    x_axis_val=st.selectbox('Select X-Axis Value',options = df.columns)
+    y_axis_val=st.selectbox('Select Y-Axis Value',options = df.columns)
+    plot=px.scatter(dataframe,  x=x_axis_val, y=y_axis_val)
     col=st.color_picker('Select a graph color')
     plot.update_traces(marker=dict(color=col))
+    
     st.plotly_chart(plot)
 
 options = st.radio ('Pages', options = 
