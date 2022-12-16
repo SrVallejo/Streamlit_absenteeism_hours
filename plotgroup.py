@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 
-import plotly_express as px
+import plotly.express as px
 
 absenteeism_by_season= (def_selection.groupby(by=['absenteeism_time_in_hours']).sum().
 ['season'].sort_values(by='season')
