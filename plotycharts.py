@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.figure_factory as ff
 
-import plotly_express as px
+import plotly.express as px
 
 def stast(dataframe):
     st.header('Data Statistic')
@@ -15,7 +15,7 @@ def stast(dataframe):
 
 def data_header (dataframe):
     st.header('Data Header')
-    st.write('df.head'())
+    st.write(dataframe.head())
 
 def plot(dataframe):
     fig, ax= plt.subplot(1,1)
@@ -23,7 +23,7 @@ def plot(dataframe):
     ax.set_xlabel('Depth')
     ax.set_ylabel('Magnitud')
     st.pyplot(fig)
-def interactive_plot(Absenteeism_at_work):
+def interactive_plot(dataframe):
     x_axis_val=st.selectbox('Select X-Axis Value'),
     options = df.columns
     y_axis_val=st.selectbox('Select Y-Axis Value'),
@@ -34,11 +34,11 @@ def interactive_plot(Absenteeism_at_work):
     st.plotly_chart(plot)
 
 options = st.radio ('Pages', options = 
-                    Data Statistics,
-                    Data Header, Plot, Interactive Plot )
+                    ('Data Statistics',
+                    'Data Header', 'Plot', 'Interactive Plot' ))
 
-if upload_file:
-    df= pd.read_csv('Absenteeism_at_work.csv')
+
+df= pd.read_csv('./dataset/Absenteeism_at_work.csv',delimiter=';')
 if options=='Data Statistics':
     (stats(df))
 elif options=='Data Header':
