@@ -6,7 +6,7 @@ st.sidebar.markdown("# Graphics mean & count")
 
 import plotly.graph_objects as go
 fig = go.Figure(
-    data=data_set["Absenteeism time in hours"].value_counts(),
+    data=[go.Bar(y=[2, 1, 3])],
     layout_title_text="A Figure Displaying Itself"
 )
 
