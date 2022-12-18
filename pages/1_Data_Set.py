@@ -65,7 +65,7 @@ with col2:
 with col3:
     
     #Disciplinary failure filter
-    ssl_df = st.radio("Disciplinary Failure",options= ["No", "No filter", "Yes"], index = 2)
+    ssl_df = st.radio("Disciplinary Failure",options= ["No Filter", "No", "Yes"], index = 0)
     
 
 
