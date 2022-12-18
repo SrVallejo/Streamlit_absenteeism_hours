@@ -95,18 +95,36 @@ def prepare_dataset_prediction():
 
 data_set = read_dataset()
 
+# Remove rows with wrong values
+
+data_set = data_set[data_set["Month of absence"]!= 0]
+
 reasons = [
-    "[0]Not specified", "[1]Infectious and parasitic diseases", "[2]Neoplasms",
-    "[3]Diseases of the blood and immune mechanism","[4]Endocrine, nutritional and metabolic diseases","[5]Mental and behavioural disorders",
-    "[6]Diseases of the nervous system", "[7]Diseases of the eye and adnexa", "[8]Diseases of the ear and mastoid process",
-    "[9]Diseases of the circulatory system","[10]Diseases of the respiratory system","[11]Diseases of the digestive system",
-    "[12]Diseases of the skin and subcutaneous tissue", "[13]Diseases of the musculoskeletal system and connective tissue","[14]Diseases of the genitourinary system",
-    "[15]Pregnancy, childbirth and the puerperium","[16]Certain conditions from the perinatal period","[17]Congenital malformations and chromosomal abnormalities",
-    "[18]Syntoms not elsewhere classified","[19]Injury, poisoning or other by external causes","[20]External causes of morbidity and mortality",
-    "[21]Health status and contact with health services", "[22]Patient follow-up","[23]Medical consultation",
-    "[24]Blood donation", "[25]Laboratory examination", "[26]Unjustified absence", 
-    "[27]Physiotherapy", "[28]Dental consultation" 
+    "Not specified", "Infectious and parasites", "Neoplasms",
+    "Blood and immune mechanism","Endocrine, nutritional and metabolic","Mental and behavioural",
+    "Nervous system", "Eye and adnexa", "Ear and mastoid process",
+    "Circulatory system","Respiratory system","Digestive system",
+    "Skin and subcutaneous tissue", "Musculoskeletal system","Genitourinary system",
+    "Pregnancy and childbirth","Perinatal period","Congenital malformations",
+    "Syntoms not classified","Injury or poisoning","External causes",
+    "Health status", "Patient follow-up","Medical consultation",
+    "Blood donation", "Laboratory examination", "Unjustified absence", 
+    "Physiotherapy", "Dental consultation" 
 ]
+
+# reasons = [
+#     "[0]Not specified", "[01]Infectious and parasitic diseases", "[02]Neoplasms",
+#     "[03]Diseases of the blood and immune mechanism","[04]Endocrine, nutritional and metabolic diseases","[05]Mental and behavioural disorders",
+#     "[06]Diseases of the nervous system", "[07]Diseases of the eye and adnexa", "[08]Diseases of the ear and mastoid process",
+#     "[09]Diseases of the circulatory system","[10]Diseases of the respiratory system","[11]Diseases of the digestive system",
+#     "[12]Diseases of the skin and subcutaneous tissue", "[13]Diseases of the musculoskeletal system and connective tissue","[14]Diseases of the genitourinary system",
+#     "[15]Pregnancy, childbirth and the puerperium","[16]Certain conditions from the perinatal period","[17]Congenital malformations and chromosomal abnormalities",
+#     "[18]Syntoms not elsewhere classified","[19]Injury, poisoning or other by external causes","[20]External causes of morbidity and mortality",
+#     "[21]Health status and contact with health services", "[22]Patient follow-up","[23]Medical consultation",
+#     "[24]Blood donation", "[25]Laboratory examination", "[26]Unjustified absence", 
+#     "[27]Physiotherapy", "[28]Dental consultation" 
+# ]
+
 
 
 day_of_the_week = [
@@ -115,11 +133,19 @@ day_of_the_week = [
     "Friday","Saturday"
 ]
 
+education = [
+    "Not specified",
+    "High school",
+    "Graduate",
+    "Postgraduate",
+    "Master and doctor"
+]   
 
 # Loop for changing Season, day and reason Number to String
 seasons_list =[]
 day_col = []
 reason_col = []
+education_col = []
 for index,row in data_set.iterrows():
     if row["Seasons"] == 1: seasons_list.append("Winter")
     elif row["Seasons"] == 2: seasons_list.append("Summer")
@@ -128,11 +154,13 @@ for index,row in data_set.iterrows():
 
     reason_col.append(reasons[int(row["Reason for absence"])])
     day_col.append(day_of_the_week[int(row["Day of the week"])])
+    education_col.append(education[int(row["Education"])])
 
 
 data_set["Seasons"] = seasons_list
 data_set["Reason for absence"] = reason_col
 data_set["Day of the week"] = day_col
+data_set["Education"]= education_col
 
 
 dataset_pred = prepare_dataset_prediction()
