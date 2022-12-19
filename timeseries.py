@@ -19,7 +19,7 @@ if analysis_type=="Single":
    
    
 
-    trend_level = sidebar.selectbox("Trend Level", ["month_of_absence', 'day_of_the_week',
+    trend_level = sidebar.selectbox("Trend Level", ["month_of_absence','day_of_the_week',
        'seasons'])
     st.markdown(f"### Currently Selected {trend_level}")
 
