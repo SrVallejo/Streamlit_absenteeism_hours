@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from main_page import data_set
+from main_page import data_set_raw as data_set
 import plotly.express as px
 
 
@@ -44,7 +44,8 @@ def create_filter_columns(column_name):
         "Transportation expense","Distance from Residence to Work","Service time",
         "Hit target", "Work load Average",
         "Weight","Height","Education",
-        "Social drinker","Social smoker"
+        "Social drinker","Social smoker",
+        "Seasons","Reason for absence","Disciplinary Failure"
     ]
 
     default = column_name not in hided_columns
@@ -79,7 +80,7 @@ def top_correlations():
 
     col1, col2 = st.columns((1,2))
     with col1:
-        coef_threshold= st.slider("Correlation coeficient threshold",min_value=0.1,max_value=0.9)
+        coef_threshold= st.slider("Correlation coeficient threshold",min_value=0.1,max_value=0.9,value=0.5)
 
     df_corr = correlation_list(data_set,coef_threshold)
     df_corr = df_corr.drop_duplicates(subset=["Coeficient"], keep='first')
