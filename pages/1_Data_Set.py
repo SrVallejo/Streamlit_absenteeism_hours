@@ -35,7 +35,10 @@ for column in data_set.columns:
 
 ########################################### Row filters #####################################
 
-
+#Position to put the rows displayed text
+marg_left, text = st.columns((2,1))
+with text:
+    total_cont = st.container()
 col1, col2, col3 = st.columns((1,1.75,1))
 
 with col1:
@@ -95,3 +98,5 @@ if sb_season != "No filter":
 
 #Show dataset
 st.write(ds_show[columns_list])
+
+total_cont.write("Total rows displayed: "+ str(len(ds_show)))
