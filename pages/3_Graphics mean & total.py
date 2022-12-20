@@ -78,9 +78,16 @@ def plot_graph(option,aggregation,color):
         label_y = "Total absence time in hours"
 
     #Change the title if option is ID
-    if option == "ID": title = label_y + " by Employee ID"
+    if option == "ID": 
+        title = label_y + " by Employee ID"
     else: title = label_y + " by " + option
     
+    #Change the label x
+    if option == "Reason for absence": label_x = ""
+    elif option == "ID": label_x = "Employee id"
+    else: label_x = option
+
+
     #Create the graph
     plot = px.bar(
         data_plot, 
@@ -88,7 +95,7 @@ def plot_graph(option,aggregation,color):
         y="Absenteeism time in hours", 
         barmode='group', 
         category_orders= category_orders,
-        labels = {"Absenteeism time in hours": label_y, option: ""},
+        labels = {"Absenteeism time in hours": label_y, option: label_x},
         title = title
         )
     #Change the color
@@ -100,6 +107,7 @@ def plot_graph(option,aggregation,color):
             tickmode = "linear"
         )
     )
+
     #Show the graph
     st.plotly_chart(plot)
 
