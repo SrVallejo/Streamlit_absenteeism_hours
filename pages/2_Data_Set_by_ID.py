@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from main_page import data_set
+from Main_Page import data_set
 
 st.markdown("# Data Set by Employee ID")
 st.sidebar.markdown("# Data Set by ID")

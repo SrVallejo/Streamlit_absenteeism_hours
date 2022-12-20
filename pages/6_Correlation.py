@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
-from main_page import data_set_raw as data_set
+from Main_Page import data_set_raw as data_set
 import plotly.express as px
 
+st.markdown("# Correlation visuals")
+st.sidebar.markdown("# Correlation")
 
 #Return a dataframe with all the correlations that surpass the threshold
 def correlation_list(dataset, threshold):
@@ -62,7 +64,7 @@ def filter_columns():
     # List of columns to show
 
     #Loop to create a checkbox for each column in the dataset
-    st.sidebar.write("Show Columns")
+    st.sidebar.write("Columns on heat map")
     for column in data_set.columns:
         create_filter_columns(column)
 

@@ -1,5 +1,5 @@
 import streamlit as st
-from main_page import dataset_pred
+from Main_Page import dataset_pred
 
 st.markdown("# Classification")
 st.sidebar.markdown("# Classification")

@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from main_page import data_set
+from Main_Page import data_set
 
 
 st.markdown("# Full Data Set")

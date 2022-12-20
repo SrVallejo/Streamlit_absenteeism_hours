@@ -1,6 +1,8 @@
 import streamlit as st
-from main_page import data_set
+from Main_Page import data_set
 import plotly.express as px
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 #Options for the selectbox
 GRAPHIC_OPTIONS = [
@@ -132,11 +134,3 @@ color_p = col1_container.color_picker("Select graph color", value= default_color
         
 #Calls function with the options selected on the inputs widgets.
 plot_graph(sb_xlabel,r_agg,color_p)
-
-
-
-
-
-
-
-
