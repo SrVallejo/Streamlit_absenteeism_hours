@@ -74,7 +74,7 @@ def heat_map():
     filter_columns()
 
     #Show heatmap
-    plot = px.imshow(data_set[columns_list].corr(), text_auto=True, color_continuous_scale="blugrn_r")
+    plot = px.imshow(data_set[columns_list].corr().round(3), text_auto=True, color_continuous_scale="blugrn_r")
     st.plotly_chart(plot)
 
 
