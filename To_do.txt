@@ -1,32 +1,22 @@
 Visualizaciones:
 
     Gráficos:
-    Frecuencia y media de horas por:
-        Mes
-        Día de la semana
-        Season
-        ID top
-        Massa corporal
-    
-    Reasons Frecuencia y media
+    Añadir line chart por checkbox o algo
 
-    Página correlación
-        Top correlación
-        Mapa calor correlación
-        Filtrar por columnas el mapa
 
-    
+    Página correlación: Hecho
 
-    Tablas:
-        Dataset -> Añadir filtros fila
-        Dataset groupby id -> Filtros de fila y columna
+    Tablas: Hecho (quizás añadir nº en tabla por id)
 
     Predicción clasificación
         -Datos algoritmo
         -Matriz de confusion
         -Quizás grafos
-    Predicción Regresión
-        -Datos algoritmo
-        -¿Gráfico comparar?
+    
+    Predicción clustering?
+
+    Conexión bbdd
+
+    Formulario
 
 
