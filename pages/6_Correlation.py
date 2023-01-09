@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from Main_Page import data_set_raw as data_set
+from Main_Page import data_set
 import plotly.express as px
 
 st.markdown("# Correlation visuals")
