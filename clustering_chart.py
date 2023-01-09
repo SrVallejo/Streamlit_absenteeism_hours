@@ -11,3 +11,4 @@ HtmlFile = open("test.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code)
+
