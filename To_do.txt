@@ -18,5 +18,8 @@ Visualizaciones:
     Conexión bbdd
 
     Formulario
+        - Escribir en base de Datos
+        - En csv
+        - No guardar
 
-
+    Reordenación
