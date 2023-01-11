@@ -1,6 +1,6 @@
 
 
-# <em> # APPUNO</em>
+# <em> APPUNO</em>
 
 ##Índice
 
@@ -12,9 +12,9 @@
 
 *[Descripción del proyecto](#descripción-del-proyecto)
 
-*[Tecnologías utilizadas](#tecnologías-utilizadas)
+*[Tecnologías usadas](#tecnologías-utilizadas)
 
-*[Características de la aplicación y demostración](#Características-de-la-aplicación-y-demostración)
+*[Características de la aplicación](#Características-de-la-aplicación-y-demostración)
 
 *[Acceso al proyecto](#acceso-proyecto)
 
