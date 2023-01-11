@@ -1,9 +1,11 @@
 
 
+# <em> # APPUNO</em>
+
 ##Índice
 
 *[Índice](#índice)
-# <em> # APPUNO</em>
+
 
 *[Insignias](#insignias)
 ![Imagen]
@@ -25,7 +27,7 @@
 *[Conclusión](#conclusión)
 
 
-# El proyecto 
+# Descripción del proyecto
 
 Appuno es una aplicación creada para agrupar o clasificar funcionários de una empresa partir del estudio de ficheros de absentismo laboral. 
 
@@ -50,4 +52,5 @@ Parte 4 - Introducion de la Base de datos
 
 # Characteristicas de la Aplicacion 
 Describir la aplicacion(streamlit)
+
 Como se ejecuta el 
