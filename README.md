@@ -3,10 +3,10 @@
 ##Índice
 
 *[Índice](#índice)
-
-*[Titulo del Proyecto](#Título-e-imagen-de-portada)
+# <em> # APPUNO</em>
 
 *[Insignias](#insignias)
+![Imagen]
 
 *[Descripción del proyecto](#descripción-del-proyecto)
 
