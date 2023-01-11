@@ -2,10 +2,9 @@
 
 # <em> APPUNO</em>
 
-##Índice
 
-*[Índice](#índice)
 
+*[Índice](#Índice)
 
 *[Insignias](#insignias)
 ![Imagen]
@@ -14,9 +13,9 @@
 
 *[Tecnologías usadas](#tecnologías-utilizadas)
 
-*[Características de la aplicación](#Características-de-la-aplicación-y-demostración)
+*[Desarrolo del proyecto](#acceso-proyecto)
 
-*[Acceso al proyecto](#acceso-proyecto)
+*[Características de la aplicación](#Características-de-la-aplicación-y-demostración)
 
 *[Personas Contribuyentes](#personas-contribuyentes)
 
@@ -51,3 +50,12 @@ Parte 4 - Introducion de la Base de datos
 Describir la aplicacion(streamlit)
 
 Como se ejecuta el 
+
+# Personas Contribuyentes 
+
+isabel Maniega
+
+# Personas Desarrolladoras del Proyecto
+
+Luis Val
+Etty Guerra de Queiroz
