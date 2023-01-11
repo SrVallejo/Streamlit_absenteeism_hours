@@ -9,13 +9,7 @@ st.markdown("# Main page 🎈")
 st.sidebar.markdown("# Main page 🎈")
 
 
-#Function to prepare de dataset to visuals
-def clean_dataset(data_set):
-# Remove rows with wrong values
-
-    data_set = data_set[data_set["Month of absence"]!= 0]
-
-    reasons = [
+reasons_list = [
         "Not specified", "Infectious and parasites", "Neoplasms",
         "Blood and immune mechanism","Endocrine, nutritional and metabolic","Mental and behavioural",
         "Nervous system", "Eye and adnexa", "Ear and mastoid process",
@@ -27,6 +21,14 @@ def clean_dataset(data_set):
         "Blood donation", "Laboratory examination", "Unjustified absence", 
         "Physiotherapy", "Dental consultation" 
     ]
+
+#Function to prepare de dataset to visuals
+def clean_dataset(data_set):
+# Remove rows with wrong values
+
+    data_set = data_set[data_set["Month of absence"]!= 0]
+
+    
 
     # reasons = [
     #     "[0]Not specified", "[01]Infectious and parasitic diseases", "[02]Neoplasms",
@@ -68,7 +70,7 @@ def clean_dataset(data_set):
         elif row["Seasons"] == 3: seasons_list.append("Autumn")
         elif row["Seasons"] == 4: seasons_list.append("Spring")
 
-        reason_col.append(reasons[int(row["Reason for absence"])])
+        reason_col.append(reasons_list[int(row["Reason for absence"])])
         day_col.append(day_of_the_week[int(row["Day of the week"])])
         education_col.append(education[int(row["Education"])])
 
@@ -98,6 +100,7 @@ try:
     sql = 'SELECT * FROM "Absenteeism at work"'
     data_set_raw = sqlio.read_sql_query(sql, conn)
     conn = None
+    print("Dataset loaded from PostgreSQL")
 
 #Read from csv file instead
 except:
