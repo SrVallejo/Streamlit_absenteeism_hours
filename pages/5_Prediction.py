@@ -15,6 +15,7 @@ def clustering(height, weight, service_time, hit_target, transportation_expense,
     work_load, pets, social_smoker, age):
     pass
     #return numero de cluster
+    
 
 #function to get actual season and translate to dataset code (1=winter,2=summer,3=fall,4=spring)
 def get_season():
@@ -127,7 +128,7 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
     #prediction model
     prediction = pickled_model.predict(x_row)
 
-    
+ 
 
     text_results = ""
     if prediction[0]== "short":
