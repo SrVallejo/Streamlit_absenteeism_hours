@@ -104,8 +104,10 @@ def predict(education, reason, disciplinary_failure,age, bodyMassIndex,social_dr
     scaler.fit_transform(x_row)
 
     #load model from pickle
-    file_path = 'pickle\classifier_Gradient Boosting.pkl'
+    file_path = 'pickle/classifier_Gradient Boosting.pkl'
     pickled_model = pickle.load(open(file_path, 'rb'))
+
+
 
     #prediction model
     prediction = pickled_model.predict(x_row)
