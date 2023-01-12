@@ -73,7 +73,8 @@ with col1:
     options.sort()
     options.insert(0,"No filter")
     sb_reasons = st.selectbox("Most frequent reason",options)
-
+    #position to display rows displayed
+    total_cont = st.container()
     
 
     
@@ -120,3 +121,4 @@ elif ssl_smoker == "No": ds_show = ds_show[ds_show["Social smoker"] == 0]
 
 #Show dataset
 st.write(ds_show[columns_list])
+total_cont.write("Number of employees: "+ str(len(ds_show)))
