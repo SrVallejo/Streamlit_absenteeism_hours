@@ -119,7 +119,7 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
 
     #load model from pickle
 
-    file_path = 'pickle/classifier_Lighgbm.pkl'
+    file_path = 'pickle/classifier_Lightgbm.pkl'
     pickled_model = pickle.load(open(file_path, 'rb'))
 
 
