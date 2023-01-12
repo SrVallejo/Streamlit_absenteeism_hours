@@ -33,11 +33,9 @@ def get_season():
 
     return season
 
-
-#reason, Day of the week, seasons, transportation expense, distance from residence, Age, Work load, Hit target
-#disciplinary failure, education, son, social drinker, social smoker, pet, body mass index,  
-
-def predict(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,social_smoker, sons, pets,distance):
+#function that process the form to predict and update database with new row
+def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
+    social_drinker,social_smoker, sons, pets,distance, service_time):
     form.empty()
     #create the new row with all the fields for prediction
     x_row = data_set_prediction.head(0)
@@ -80,7 +78,7 @@ def predict(education, reason, disciplinary_failure,age, bodyMassIndex,social_dr
     #sons
     #the model work with dummies for sons from 0 to 4, so we have to group 4 or more kids in the same column
     if sons > 4: sons = 4
-    if sons!= 0: x_row.at[0,"Son_"+str(sons)]
+    if sons!= 0: x_row.at[0,"Son_"+str(sons)] = 1
 
     #social drinker
     x_row.at[0,"Social drinker"] = int(social_drinker)
@@ -122,6 +120,7 @@ def predict(education, reason, disciplinary_failure,age, bodyMassIndex,social_dr
 
 
 def buildform():
+    #all inside a container to hide it when we click on predict.
     with form.container():
         #EDUCATION
         education_opts = ["High school","Graduate","Postgraduate","Master and doctor"]
@@ -132,6 +131,8 @@ def buildform():
         disciplinary_failure = st.checkbox("Disciplinary Failure")
         #Age
         age = st.slider ("Age",min_value=16,max_value=70)
+        #Service time
+        service_time = st.slider("Service time (in years)", min_value=0,max_value =70)
         #Body weight mass
         bodyMassIndex = st.slider("Body Mass Index",min_value = 10, max_value = 50)
         #Social drinker
@@ -147,7 +148,8 @@ def buildform():
 
 
         if st.button(label= "Predict"):
-            predict(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,social_smoker, sons, pets,distance)
+            process_form(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,
+                social_smoker, sons, pets,distance, service_time)
 
 
 
