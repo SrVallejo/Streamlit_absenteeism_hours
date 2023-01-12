@@ -281,8 +281,4 @@ def buildform():
                 trans_expense, work_load, hit_target)
 
 
-
-#Get date from today (season and day of the week)
-
-
 buildform()
