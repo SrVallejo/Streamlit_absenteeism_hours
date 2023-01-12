@@ -28,6 +28,8 @@ education_list = [
         "Postgraduate",
         "Master and doctor"
     ] 
+
+@st.experimental_memo
 #Function to prepare de dataset to visuals
 def clean_dataset(data_set):
 # Remove rows with wrong values
@@ -85,6 +87,7 @@ def clean_dataset(data_set):
 
 #Function that prepares the dataset for prediction
 #Create dummies and categorize columns
+@st.experimental_memo
 def prepare_dataset_prediction(data_set):
 
     #Drop columns that lower our prediction accuracy
@@ -175,24 +178,27 @@ def connect():
     cur = conn.cursor()
     return cur, conn
 
+@st.experimental_memo
+def read_dataset_raw():
+    #Try to connect to the database and get the data set
+    try:
+        cur, conn = connect()
+        sql = 'SELECT * FROM "Absenteeism at work"'
+        data_set_raw = sqlio.read_sql_query(sql, conn)
+        conn = None
+        #if its loaded from postgress, erase index column
+        data_set_raw = data_set_raw.drop(["index"], axis = 1)
+        print("Dataset loaded from PostgreSQL")
 
-#Try to connect to the database and get the data set
-try:
-    cur, conn = connect()
-    sql = 'SELECT * FROM "Absenteeism at work"'
-    data_set_raw = sqlio.read_sql_query(sql, conn)
-    conn = None
-    #if its loaded from postgress, erase index column
-    data_set_raw = data_set_raw.drop(["index"], axis = 1)
-    print("Dataset loaded from PostgreSQL")
-
-#Read from csv file instead
-except:
-    print("Can't connect to BBDD\nReading Dataset from csv")
-    data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
+    #Read from csv file instead
+    except:
+        print("Can't connect to BBDD\nReading Dataset from csv")
+        data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
+    return data_set_raw
     
 
 #We have to data sets: data_set with the cleaned data, and
 #data_set_raw with no processed data
+data_set_raw = read_dataset_raw()
 data_set = clean_dataset(data_set_raw)
 data_set_prediction = prepare_dataset_prediction(data_set_raw)
