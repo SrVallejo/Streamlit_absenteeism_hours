@@ -47,7 +47,7 @@ Parte 4 - Introducion de la Base de datos
 
 
 # Characteristicas de la Aplicacion 
-Describir la aplicacion(streamlit)
+
 
 Como se ejecuta el 
 
