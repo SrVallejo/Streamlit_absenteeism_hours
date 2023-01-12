@@ -11,6 +11,11 @@ form = st.empty()
 results = st.empty()
 
 
+def clustering(height, weight, service_time, hit_target, transportation_expense, 
+    work_load, pets, social_smoker, age):
+    pass
+    #return numero de cluster
+
 #function to get actual season and translate to dataset code (1=winter,2=summer,3=fall,4=spring)
 def get_season():
     # get the current day of the year
@@ -37,6 +42,8 @@ def get_season():
 def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
     social_drinker,social_smoker, sons, pets,distance, service_time):
     form.empty()
+
+
     #create the new row with all the fields for prediction
     x_row = data_set_prediction.head(0)
     
