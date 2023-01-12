@@ -82,6 +82,9 @@ def clean_dataset(data_set):
 
     return data_set
 
+
+#Function that prepares the dataset for prediction
+#Create dummies and categorize columns
 def prepare_dataset_prediction(data_set):
 
     #Drop columns that lower our prediction accuracy
