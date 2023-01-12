@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import datetime
 import pandas as pd
-from Main_Page import data_set_prediction, reasons_list, education_list
+from Main_Page import data_set_prediction, reasons_list, education_list,connect
 from sklearn.preprocessing import StandardScaler
 
 st.markdown("# Prediction")
@@ -39,6 +39,24 @@ def get_season():
 
     return season
 
+
+def store_data(new_row):
+    try:
+        cur, conn = connect()
+        query = "INSERT INTO Absenteeism at work VALUES (" 
+        for value in new_row:
+            query +=str(value)
+            query +=","
+        #erase last comma
+        query = query[:-1]
+        query += ");"
+        cur.execute(query)
+        conn.commit()
+    except:
+        print("Can't connect to database: stored in csv")
+
+
+
 #function that process the form to predict and update database with new row
 def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,
                 social_smoker, sons, pets,distance, service_time, id, height, weight,
@@ -61,7 +79,10 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
     #Reason
     x_row.at[0,'Reason for absence'] = reasons_list.index(reason)
     #Day of the week +2 because monday is 2 in dataset, and 0 in weekday function
-    x_row.at[0,'Day of the week'] = datetime.datetime.today().weekday()+2 
+    day = datetime.datetime.today().weekday()+2
+    if day > 7: day -= 6
+    x_row.at[0,'Day of the week'] = day
+
     #seasons
     season_num = get_season()
     if season_num != 1:
@@ -130,13 +151,20 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
 
  
 
+    #We save de abs time based on the prediction (the "mid" value)
+    #Also we create a message to show as result
     text_results = ""
+    abs_time = 0
     if prediction[0]== "short":
         text_results = "This sick leave will be of 2 hours or less"
+        abs_time = 1
     elif prediction[0]== "medium":
         text_results = "This sick leave will be between 2 and 8 hours"
+        abs_time = 4
     else:
        text_results = "This sick leave will be for more than 8" 
+       abs_time = 16
+
 
 
     with results.container():
@@ -144,12 +172,27 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
         st.write(text_results)
         st.write("Model precission: 72%")
         st.write("Do you want to save this information?")
-        destiny = st.selectbox("Destination",["Local (csv)","Data base"])
-        if st.button("Save Data"):
-            if destiny == "Local (csv)": 
-                pass#store_csv(row_list)
-            else:
-                pass#store_db(row_list)
+
+        #Create list for store the data
+            #Columns disposition:   
+            # ID	Reason for absence	Month of absence	
+            # Day of the week  Seasons	Transportation expense	
+            # Distance from Residence to Work	Service time  Age	
+            # Work load Average/day 	Hit target	Disciplinary failure	
+            # Education	Son	Social drinker	
+            # Social smoker	Pet	Weight	
+            # Height	Body mass index	Absenteeism time in hours
+
+        new_row =[
+            id, reasons_list.index(reason), datetime.datetime.now().month,
+            day, season_num, trans_expense,
+            distance, service_time, age,
+            work_load, hit_target, int(disciplinary_failure),
+            education_list.index(education), sons, int(social_drinker),
+            int(social_smoker), pets, weight,
+            height, bodyMassIndex, abs_time
+        ]
+        st.button("Save Data", on_click=store_data(new_row))
         if st.button("Don't Save Data"):
             pass
 
