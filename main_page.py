@@ -5,8 +5,31 @@ import psycopg2
 import settings
 #from create_database import clean_dataset
 
-st.markdown("# Main page 🎈")
-st.sidebar.markdown("# Main page 🎈")
+st.markdown("# Main page")
+st.sidebar.markdown("# Main page")
+
+st.write("This dashboard is a report for the data set Absenteeism at work that have a collection of sick\
+     leaves, one in each row, for a Brazilian courier company from July 2007 to July 2010")
+    
+st.markdown("The objective is to predict how long will be each sick leave. In order to do that we categorize\
+    the Absenteeism hours in 3 categories.\n\n\
+    1. Short: Less than 2 hours\n\
+    2. Medium: A day or less\n\
+    3. Long: More than a day\n")
+
+st.markdown("You will find the next pages:\n\n\
+    - Data set: Shows full data set with filters\n\
+    - Data set by id: Show the data set grouped by id with filters\n\
+    - Graphics mean & total: Graphics of Absenteeism time crossed with some fields\n\
+    - Correlation: Heatmap and other correlation visuals\n\
+    - Prediction: Predicts how long a sick leave will take\n\
+    - Clustering: Shows a cluster visualization")
+
+st.write("This dashboard is created by")
+st.write("Etty Guerra de Queiroz [linkedin](https://www.linkedin.com/in/etty-guerra-42590225b/)")
+st.write("Luis Vallejo Carretero [linkedin](https://www.linkedin.com/in/luisvallejocarretero/)")
+
+
 
 
 reasons_list = [
