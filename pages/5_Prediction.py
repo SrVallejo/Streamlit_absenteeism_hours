@@ -127,9 +127,31 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
     #prediction model
     prediction = pickled_model.predict(x_row)
 
+    
+
+    text_results = ""
+    if prediction[0]== "short":
+        text_results = "This sick leave will be of 2 hours or less"
+    elif prediction[0]== "medium":
+        text_results = "This sick leave will be between 2 and 8 hours"
+    else:
+       text_results = "This sick leave will be for more than 8" 
+
+
     with results.container():
-        st.write(x_row)
-        st.write(prediction)
+        st.markdown("### " + prediction[0])
+        st.write(text_results)
+        st.write("Model precission: 72%")
+        st.write("Do you want to save this information?")
+        destiny = st.selectbox("Destination",["Local (csv)","Data base"])
+        if st.button("Save Data"):
+            if destiny == "Local (csv)": 
+                pass#store_csv(row_list)
+            else:
+                pass#store_db(row_list)
+        if st.button("Don't Save Data"):
+            pass
+
 
     
     
@@ -142,7 +164,7 @@ def buildform():
     #all inside a container to hide it when we click on predict.
     with form.container():
         #ID
-        id = st.number_input("Employee ID", min_value=0)
+        id = st.number_input("Employee ID", min_value=1)
         #Reason
         reason = st.selectbox("Reason for absence", reasons_list)
         #Disciplinary failure checkbox
