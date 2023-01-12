@@ -53,8 +53,8 @@ Como se ejecuta el
 
 # Personas Contribuyentes 
 
-isabel Maniega
+Isabel Maniega
 
 # Personas Desarrolladoras del Proyecto
 
-Luis Vallejo / Etty Guerra de Queiroz
+Etty Guerra de Queiroz / Luis Vallejo
