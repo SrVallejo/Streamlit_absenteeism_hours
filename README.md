@@ -47,9 +47,10 @@ Parte 4 - Introducion de la Base de datos
 
 
 # Characteristicas de la Aplicacion 
-
-
-Como se ejecuta el 
+Paginas :
+1- Filtrado y imagen del datset
+2- Visualización de los datos(graficos:histogramas, correlación)
+3-Predición (Grafico Clustering, Formulario- base de datos- Prediccion:Clustering, Classificacion)
 
 # Personas Contribuyentes 
 
