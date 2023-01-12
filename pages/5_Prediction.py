@@ -11,10 +11,10 @@ form = st.empty()
 results = st.empty()
 
 
-def clustering(height, weight, service_time, hit_target, transportation_expense, 
-    work_load, pets, social_smoker, age):
-    pass
-    #return numero de cluster
+
+    
+   
+    
     
 
 #function to get actual season and translate to dataset code (1=winter,2=summer,3=fall,4=spring)
@@ -154,8 +154,29 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,soci
             pass
 
 
+    # Prediction clustering
+#def clustering(height, weight, service_time, hit_target, transportation_expense, 
+    #work_load, pets, social_smoker, age):
+   # pass
     
+   # c_row = data_set_prediction.head(0)
     
+    #load model from pickle
+   # file_path = 'pickle/km3.pkl'
+   # pickled_model = pickle.load(open(file_path, 'rb'))
+    #prediction model
+   # prediction1 = pickled_model.predict(c_row)
+
+
+   # models_results = ""
+   # if prediction1[0]== "grupo_1":
+        #models_results = "Pasan mas horas del dia en la empresa"
+   # elif prediction1[1]== "grupo_2":
+       # models_results = "Los funcionarios que viven mas lejos"
+   # else:
+       # models_results = "Los que viven mas cerca" 
+
+   # return models_results
 
 
     
