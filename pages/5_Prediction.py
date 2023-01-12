@@ -39,10 +39,19 @@ def get_season():
     return season
 
 #function that process the form to predict and update database with new row
-def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
-    social_drinker,social_smoker, sons, pets,distance, service_time):
+def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,
+                social_smoker, sons, pets,distance, service_time, id, height, weight,
+                trans_expense, work_load, hit_target):
+
+    #hide the form once the button predict is clicked
     form.empty()
 
+    #clustering function
+    clustering(height, weight, service_time, hit_target, trans_expense, 
+    work_load, pets, social_smoker, age)
+
+
+    #### Prediction 
 
     #create the new row with all the fields for prediction
     x_row = data_set_prediction.head(0)
@@ -59,7 +68,7 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
 
     
     #transportation expense (substitute by mean)
-    x_row.at[0,"Transportation expense"] = data_set_prediction["Transportation expense"].mean()
+    x_row.at[0,"Transportation expense"] = trans_expense
 
     #distance from residence
     if distance < 20: pass
@@ -71,10 +80,10 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
     elif age >= 45: x_row.at[0,"Age_old"] = 1
     
     #work load (substitute by mean)
-    x_row.at[0,"Work load Average/day "] = data_set_prediction["Work load Average/day "].mean()
+    x_row.at[0,"Work load Average/day "] = work_load
 
     #hit target (substitute by mean)
-    x_row.at[0,"Hit target"] = data_set_prediction["Hit target"].mean()
+    x_row.at[0,"Hit target"] = hit_target
 
     #Disciplinary failure
     x_row.at[0,"Disciplinary failure"] = int(disciplinary_failure)
@@ -105,11 +114,12 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
     x_row = x_row.drop(["Absenteeism time in hours", "Group Hours"], axis = 1)
     
     #scaling
-    scaler = StandardScaler()
-    scaler.fit_transform(x_row)
+    # scaler = StandardScaler()
+    # scaler.fit_transform(x_row)
 
     #load model from pickle
-    file_path = 'pickle/classifier_Gradient Boosting.pkl'
+
+    file_path = 'pickle/classifier_Lighgbm.pkl'
     pickled_model = pickle.load(open(file_path, 'rb'))
 
 
@@ -131,9 +141,8 @@ def process_form(education, reason, disciplinary_failure,age, bodyMassIndex,
 def buildform():
     #all inside a container to hide it when we click on predict.
     with form.container():
-        #EDUCATION
-        education_opts = ["High school","Graduate","Postgraduate","Master and doctor"]
-        education = st.radio("Education", education_opts)
+        #ID
+        id = st.number_input("Employee ID", min_value=0)
         #Reason
         reason = st.selectbox("Reason for absence", reasons_list)
         #Disciplinary failure checkbox
@@ -142,6 +151,13 @@ def buildform():
         age = st.slider ("Age",min_value=16,max_value=70)
         #Service time
         service_time = st.slider("Service time (in years)", min_value=0,max_value =70)
+        #EDUCATION
+        education_opts = ["High school","Graduate","Postgraduate","Master and doctor"]
+        education = st.radio("Education", education_opts)
+        #Height
+        height = st.slider("Height (in cm's)", min_value=100, max_value=250)
+        #weight
+        weight = st.slider("Weight (in kgm's)", min_value=20, max_value=200)
         #Body weight mass
         bodyMassIndex = st.slider("Body Mass Index",min_value = 10, max_value = 50)
         #Social drinker
@@ -154,11 +170,18 @@ def buildform():
         pets = st.number_input("Number of pets", min_value=0)
         #Distance
         distance = st.slider("Distance from residence to work", min_value=0, max_value = 70)
+        #Transportation expense
+        trans_expense = st.slider("Transportation expense", min_value=100, max_value=400)
+        #work load average day
+        work_load = st.slider("Work load (Average/Day)", min_value=200, max_value=400)
+        #hit target
+        hit_target = st.slider("Hit target", min_value=0, max_value=100)
 
 
         if st.button(label= "Predict"):
             process_form(education, reason, disciplinary_failure,age, bodyMassIndex,social_drinker,
-                social_smoker, sons, pets,distance, service_time)
+                social_smoker, sons, pets,distance, service_time, id, height, weight,
+                trans_expense, work_load, hit_target)
 
 
 
