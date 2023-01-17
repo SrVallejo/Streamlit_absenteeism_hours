@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import pandas.io.sql as sqlio
-import psycopg2
-import settings
+#import psycopg2
+#import settings
 #from create_database import clean_dataset
 
 st.markdown("# Main page")
@@ -191,34 +191,36 @@ def prepare_dataset_prediction(data_set):
 
     return dataset_pred
 
-def connect():
-    conn = psycopg2.connect(database="Absenteeism",
-                            user=settings.USER,
-                            password=settings.PASSWORD,
-                            host=settings.HOST,
-                            port=settings.PORT)
+# def connect():
+#     conn = psycopg2.connect(database="Absenteeism",
+#                             user=settings.USER,
+#                             password=settings.PASSWORD,
+#                             host=settings.HOST,
+#                             port=settings.PORT)
 
-    cur = conn.cursor()
-    return cur, conn
+#     cur = conn.cursor()
+#     return cur, conn
 
 @st.experimental_memo
 def read_dataset_raw():
     #Try to connect to the database and get the data set
-    try:
-        cur, conn = connect()
-        sql = 'SELECT * FROM "Absenteeism at work"'
-        data_set_raw = sqlio.read_sql_query(sql, conn)
-        conn = None
-        #if its loaded from postgress, erase index column
-        data_set_raw = data_set_raw.drop(["index"], axis = 1)
-        print("Dataset loaded from PostgreSQL")
+    # try:
+    #     cur, conn = connect()
+    #     sql = 'SELECT * FROM "Absenteeism at work"'
+    #     data_set_raw = sqlio.read_sql_query(sql, conn)
+    #     conn = None
+    #     #if its loaded from postgress, erase index column
+    #     data_set_raw = data_set_raw.drop(["index"], axis = 1)
+    #     print("Dataset loaded from PostgreSQL")
 
     #Read from csv file instead
-    except:
-        print("Can't connect to BBDD\nReading Dataset from csv")
-        data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
-    return data_set_raw
+    # except:
+    #     print("Can't connect to BBDD\nReading Dataset from csv")
+    #     data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
+    # return data_set_raw
     
+    #Without server to upload to streamlit
+    data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
 
 #We have to data sets: data_set with the cleaned data, and
 #data_set_raw with no processed data
