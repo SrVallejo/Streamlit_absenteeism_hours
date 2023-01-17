@@ -2,7 +2,7 @@ import streamlit as st
 import pickle
 import datetime
 import pandas as pd
-from Main_Page import data_set_prediction, reasons_list, education_list, connect
+from Main_Page import data_set_prediction, reasons_list, education_list#, connect
 from sklearn.preprocessing import StandardScaler
 
 st.markdown("# Prediction")

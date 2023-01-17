@@ -220,7 +220,7 @@ def read_dataset_raw():
     # return data_set_raw
     
     #Without server to upload to streamlit
-    data_set_raw = pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
+    return pd.read_csv("dataset/Absenteeism_at_work.csv",delimiter=";")
 
 #We have to data sets: data_set with the cleaned data, and
 #data_set_raw with no processed data
