@@ -40,10 +40,10 @@ Con este proyecto el usuario también poderia utilizar las caracteristicas como 
  
  # Desarollo del proyecto 
 
-Parte 1 - Analises y vizualización de los datos
-Parte 2 -  Predición
-Parte 3 - Filtrado de datos
-Parte 4 - Introducion de la Base de datos
+Parte 1 - Analises y vizualización de los datos </n>
+Parte 2 - Predición </n>
+Parte 3 - Filtrado de datos </n>
+Parte 4 - Introducion de la Base de datos <n>
 
 
 # Characteristicas de la Aplicacion 
